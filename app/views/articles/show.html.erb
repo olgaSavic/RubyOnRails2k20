@@ -16,10 +16,19 @@
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"}
  %>
  <br>
+ <% if @article.draft? %>
+ 	<%= link_to "archive",  :controller => "articles", :action => "archive", :id => @article %>
+ <% else %>
+ 	<p>Article is archived.</p>
+ <% end %>
+<br>
  <% end %>
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
-<br>
-<%= render partial: 'comments/form' %>
+ <% if @article.draft? %>
+	<br>
+	<%= render partial: 'comments/form' %>
+	<br>
+<% end %>	
 <br>
 <%= link_to "<< Back to Articles List", articles_path %>

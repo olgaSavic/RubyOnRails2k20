@@ -43,10 +43,11 @@ class ArticlesController < ApplicationController
   		redirect_to article_path(@article)
 	end
 
-
-
-
-
-
+	def archive
+		@article = Article.find(params[:id])
+		@article.status = 1
+		@article.save
+		redirect_to article_path(@article)
+	end
 
 end
