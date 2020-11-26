@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
 	def create
 		@article = Article.new(article_params)
   		@article.save
+  		ArticleMailer.new_article(current_user, @article).deliver_later
   		flash.notice = "Article '#{@article.title}' Created!"
   		redirect_to article_path(@article)
 	end
