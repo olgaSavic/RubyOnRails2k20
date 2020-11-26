@@ -8,6 +8,6 @@ class ArticleMailer < ApplicationMailer
 
   def new_article(user, article)
     @article = article
-    mail to: user.email, subject: "New article created"
+    mail to: user.email, subject: "New article '#{@article.title}' created"
   end
 end
