@@ -1,4 +1,25 @@
 Rails.application.configure do
+
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  # EMAIL SETTINGS
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "article"
+  config.active_job.queue_name_delimiter = "_"
+  config.action_mailer.perform_deliveries = true
+  config.assets.raise_runtime_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com", 
+    port: 587, 
+    domain: "example.com",
+    authentication: "plain",
+    enable_starttls_auto: true, 
+    user_name: "isa.fakultet@gmail.com", # ENV["GMAIL_USERNAME"]
+    password: "fakultet123" # ENV["GMAIL_PASSWORD"]
+
+  }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

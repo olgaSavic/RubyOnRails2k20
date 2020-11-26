@@ -1,0 +1,8 @@
+---
+:concurrency: 1
+:queues:
+  - default
+  - mailers
+
+  - article_default
+  - article_mailers

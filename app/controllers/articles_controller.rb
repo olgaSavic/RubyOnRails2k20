@@ -16,6 +16,8 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.new(article_params)
+		@article.author = current_user
+		puts "AUTOR JE: " + @article.author.email
   		@article.save
   		ArticleMailer.new_article(current_user, @article).deliver_later
   		flash.notice = "Article '#{@article.title}' Created!"

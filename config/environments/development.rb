@@ -30,6 +30,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # EMAIL SETTINGS
+  config.active_job.queue_adapter = :sidekiq
+  config.active_job.queue_name_prefix = "article"
+  config.active_job.queue_name_delimiter = "_"
+  config.action_mailer.perform_deliveries = true
   config.assets.raise_runtime_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
