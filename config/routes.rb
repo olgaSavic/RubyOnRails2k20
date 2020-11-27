@@ -9,8 +9,7 @@ Rails.application.routes.draw do
 
 	get 'login'  => 'author_sessions#new'
 	get 'logout' => 'author_sessions#destroy'
-  get '/article/archive/:id' => 'articles#archive'
-
+  match '/articles/:id/archive' => 'articles#archive', via: [:get, :put]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

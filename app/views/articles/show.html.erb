@@ -17,7 +17,7 @@
  %>
  <br>
  <% if @article.draft? %>
- 	<%= link_to "archive",  :controller => "articles", :action => "archive", :id => @article %>
+ 	<%= link_to "archive",  :controller => "articles", method: :put, :action => "archive", :id => @article %>
  <% else %>
  	<p>Article is archived.</p>
  <% end %>
