@@ -21,6 +21,12 @@ class Article < ApplicationRecord
   		self.tags = new_or_found_tags
 	end
 
+	def archive
+		self.status = :archived
+		self.save
+	end	
+
+
 
 
 end

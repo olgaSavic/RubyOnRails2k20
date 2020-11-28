@@ -11,7 +11,6 @@ RSpec.describe ArticlesController, :type => :controller do
       image_file_name: "Thumbnail-Sumerian-Coffee-DSC_6295-200x200.jpg", 
       image_content_type: "image/jpeg", image_file_size: 9996, 
       image_updated_at: "2020-11-26 20:53:46", status: "draft", author_id: 1)
-      article.save
       expect { put :archive, params: { :id => article } }.to change { article.reload.status.to_sym }.from(:draft).to(:archived)      
     end
   end  

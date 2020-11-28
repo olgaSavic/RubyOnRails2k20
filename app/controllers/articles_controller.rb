@@ -47,8 +47,7 @@ class ArticlesController < ApplicationController
 
 	def archive
 		@article = Article.find(params[:id])
-		@article.status = 1
-		@article.save
+		@article.archive
 		ArchiveMailer.new_archive(@article.author, @article).deliver_later
 		redirect_to article_path(@article)
 	end
